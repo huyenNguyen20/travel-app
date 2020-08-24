@@ -51,13 +51,14 @@ app.get("/all", (req, res) => {
 app.post("/search", async (req, res) => {
     //Parse the request information
     const reqData = req.body
-    //console.log(reqData)
+    console.log(reqData)
     try {
         //Fetch GeoLocation API
         const geoData = await getGeoAPI(reqData.city)
+        
         //Fetch Location Picture API
         const picData = await getPixaAPI(reqData.city)
-
+        
         //Location Data
         const city = {}
         city.location = {
@@ -69,7 +70,8 @@ app.post("/search", async (req, res) => {
             description: geoData.fcodeName,
             population: `${formatNumber(geoData.population)} people`
         }
-       if(daysLeft <= 16){
+
+        if(reqData.daysLeft <= 16){
             const weatherData = await getWeatherAPI(geoData.lat, geoData.lng)
             city.weather = {
                 message: true,
@@ -88,7 +90,6 @@ app.post("/search", async (req, res) => {
                 date: reqData.tripDate
            }
        }
-      
 
        const covidData = await getCovidAPI(geoData.countryCode, reqData.today)
        city.covid = {

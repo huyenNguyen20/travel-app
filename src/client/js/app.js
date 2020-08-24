@@ -40,6 +40,7 @@ const getProjectData = async (url="") => {
 
 /* Function to update UI  */
 const updateUI = (data) => {
+    
     const html = 
     `<figure class="city-pic">
         <img src="${data.img}" alt="${data.location.city} Picture">
@@ -85,25 +86,12 @@ const updateUI = (data) => {
         <p class="result__item-orange"><span>Country</span> ${data.location.country}</p>
         <p class="result__item-gray"><span>Description</span> ${data.location.description}</p>
         <p class="result__item-orange"><span>City Population</span> ${data.location.population}</p>
-        <p class="result__item-gray"><span>Weather</span> ${data.weather.temp}. ${data.weather.description}</p>
+        <p class="result__item-gray"><span>Weather</span> ${checkIfTempAvaliable(data)}</p>
         <p class="result__item-orange"><span>Covid-19 Cases</span> ${data.covid.cases}</p>
     </section>
 
     <section class="city__weather" id="Weather">
-        <h3> Weather</h3>
-        <div class = "weather--date">${formatDate(data.weather.date)}</div>
-        <div class = "weather__head">
-            <img class = "js-img" src="${data.weather.icon}" alt="">
-            <div class = "weather--temp"> 
-            ${data.weather.temp}
-            </div>
-        </div>
-        <p class="result__item-orange"><span>Description</span> ${data.weather.description}</p>
-        <p class="result__item-gray"><span>Lowest Temperature</span> ${data.weather.lowTemp}</p>
-        <p class="result__item-orange"><span>High Temperature</span> ${data.weather.maxTemp}</p>
-        <p class="result__item-gray"><span>Cloud</span> ${data.weather.temp}</p>
-        <p class="result__item-orange"><span>Precipation</span> ${data.weather.precipation}</p>
-
+    ${checkIfWeatherAvaliable(data)}
     </section>
     <section class="city__country" id="Country">
         <h3> Country</h3>
@@ -128,6 +116,37 @@ function formatDate (dateString){
     let date = new Date(dateString)
     return `${date.toString().substring(0,3)}, ${date.toString().substring(4,15)}`
 }
+
+function checkIfTempAvaliable (data) {
+    console.log(data.weather.message)
+    if (data.weather.message){
+        return `${data.weather.temp}. ${data.weather.description}`;
+    } else {
+        return "Unavailable";
+    }
+}
+
+function checkIfWeatherAvaliable (data) {
+
+    if (data.weather.message){
+        return `<h3> Weather</h3>
+        <div class = "weather--date">${formatDate(data.weather.date)}</div>
+        <div class = "weather__head">
+            <img class = "js-img" src="${data.weather.icon}" alt="">
+            <div class = "weather--temp"> 
+            ${data.weather.temp}
+            </div>
+        </div>
+        <p class="result__item-orange"><span>Description</span> ${data.weather.description}</p>
+        <p class="result__item-gray"><span>Lowest Temperature</span> ${data.weather.lowTemp}</p>
+        <p class="result__item-orange"><span>High Temperature</span> ${data.weather.maxTemp}</p>
+        <p class="result__item-gray"><span>Cloud</span> ${data.weather.temp}</p>
+        <p class="result__item-orange"><span>Precipation</span> ${data.weather.precipation}</p>`;
+    } else {
+        return "<p>Data is Not Available</p>";
+    }
+}
+
 
 module.exports = {
     today,
