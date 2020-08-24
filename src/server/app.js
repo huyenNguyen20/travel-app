@@ -69,18 +69,26 @@ app.post("/search", async (req, res) => {
             description: geoData.fcodeName,
             population: `${formatNumber(geoData.population)} people`
         }
-
-       const weatherData = await getWeatherAPI(geoData.lat, geoData.lng)
-       city.weather = {
-            icon: `https://www.weatherbit.io/static/img/icons/${weatherData[reqData.daysLeft + 1].weather.icon}.png`,
-            description: weatherData[reqData.daysLeft + 1].weather.description,
-            lowTemp: `${weatherData[reqData.daysLeft + 1].low_temp} °C`,
-            maxTemp: `${weatherData[reqData.daysLeft + 1].high_temp} °C`,
-            temp: `${weatherData[reqData.daysLeft + 1].temp} °C`,
-            cloud: `${weatherData[reqData.daysLeft + 1].clouds} %`,
-            precipation: `${weatherData[reqData.daysLeft + 1].precip} %`,
-            date: weatherData[reqData.daysLeft + 1].valid_date
-       } 
+       if(daysLeft <= 16){
+            const weatherData = await getWeatherAPI(geoData.lat, geoData.lng)
+            city.weather = {
+                message: true,
+                icon: `https://www.weatherbit.io/static/img/icons/${weatherData[reqData.daysLeft + 1].weather.icon}.png`,
+                description: weatherData[reqData.daysLeft + 1].weather.description,
+                lowTemp: `${weatherData[reqData.daysLeft + 1].low_temp} °C`,
+                maxTemp: `${weatherData[reqData.daysLeft + 1].high_temp} °C`,
+                temp: `${weatherData[reqData.daysLeft + 1].temp} °C`,
+                cloud: `${weatherData[reqData.daysLeft + 1].clouds} %`,
+                precipation: `${weatherData[reqData.daysLeft + 1].precip} %`,
+                date: weatherData[reqData.daysLeft + 1].valid_date
+            } 
+       } else {
+           city.weather = {
+                message: false,
+                date: reqData.tripDate
+           }
+       }
+      
 
        const covidData = await getCovidAPI(geoData.countryCode, reqData.today)
        city.covid = {
