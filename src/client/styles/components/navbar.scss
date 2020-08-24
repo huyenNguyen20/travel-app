@@ -1,0 +1,63 @@
+$font:  'Dancing Script', cursive;
+$text-font-size: 1rem;
+$dark-orange: #f0ae44;
+$light-yellow: #ecf905;
+
+.mainnav{
+  width: 100%;
+  height: auto;
+}
+
+.navbar__logo{
+
+  display: inline-block;
+
+  img{
+    height: 50px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+
+  span{
+    display: inline-block;
+    font-family: $font;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-top: 0.5rem;
+  }
+}
+
+.navbar__links{
+  display: flex;
+  list-style: none;
+  float: right;
+  margin-top: 1rem;
+
+  li{
+    margin-left: 30px;
+  }
+
+}
+
+.navbar__links--link{
+
+  &:link,
+  :visited{
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #fff;
+    transition: color 0.2s;
+  }
+
+  &:hover{
+    color: $light-yellow;
+  }
+}
+
+#favorite{
+  img{
+    height: 40px;
+    width: auto;
+  }
+}

@@ -1,0 +1,40 @@
+$font:  'Lato', sans-serif;
+$text-font-size: 1rem;
+$dark-orange: #f0ae44;
+$light-yellow: #ecf905;
+
+header{
+  background-image: linear-gradient(to right bottom, #fcc648, #fa665c);
+  height: 100vh;
+}
+
+.main-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -60%);
+}
+
+.love-icon{
+  color: red;
+}
+
+.emphasize{
+  color: $light-yellow;
+  text-decoration-style: solid;
+}
+
+/*Media Query*/
+@media (max-width: 768px){
+  .main-title{
+    top: 30%;
+    left: 5%;
+    transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 426px){
+  .main-title{
+    top: 15%;
+  }
+}

@@ -1,0 +1,167 @@
+<!--
+  Title: Homepage for the Travel Journal
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel Journal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+
+      <!-- Navigation Bar -->
+      <div class="mainnav">
+        <div class="row">
+          <div class="mainnav__bar">
+            <nav>
+              <div class="navbar__logo"><span>Travel Mate</span> </div>
+              <ul class="navbar__links">
+                  <li id="favorite">
+                    <button class="icon-btn" id="like-list">
+                      <img src="https://img.icons8.com/cotton/64/000000/like--v3.png"/>
+                    </button>
+                  </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title for the Header -->
+      <div class="main-title">
+        <h1>Create your <span class="emphasize">Wonderful</span> trip today with Travel Mate.</h1>
+
+        <!-- Search Form -->
+        <form>
+          <input type="date" id="date" 
+                name="trip-start"
+                min="2020-08-01" 
+                max="2021-08-01"
+                required pattern="\d{4}-\d{2}-\d{2}"
+                required >
+          
+
+          <div class="search">
+            <input class= "form__city"type="text" id="city" placeholder="City Name">
+            <button class= "btn btn-big" id="generate" type = "submit"> Search </button>
+          </div>
+        </form>
+
+
+
+      </div>
+
+    </header>
+
+    <main>
+      <h2 class="destination-name">Your Destination</h2>
+      <div class="sidebar">
+        <a class="sidebar-link" id="summary" href="#Summary">Summary </a>
+        <a class="sidebar-link" id="weather" href="#Weather">Weather </a>
+        <a class="sidebar-link" id="country" href="#Country">Country </a>
+        <a class="sidebar-link" id="covid" href="#Covid">Covid-19  </a>
+      </div>
+  
+      <div class="main-doc">
+
+        <!-- <figure class="city-pic">
+          <h2>Hanoi</h2>
+        </figure>   -->
+
+        <!-- <section class="social__media" > 
+          <ul class="content-info-social-link">
+            <li><a role="button"
+                   class="twitter-icon"
+                   href="https://twitter.com/">
+                   <img src="https://img.icons8.com/fluent/48/000000/twitter.png"/>
+              </a>
+            </li>
+            <li><a role="button"
+                  class="facebook-icon"
+                  href="https://facebook.com/">
+                  <img src="https://img.icons8.com/fluent/48/000000/facebook-new.png"/>
+              </a>
+            </li>
+            <li><a role="button"
+                    class="instagram-icon"
+                    href="https://instagram.com/">
+                    <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/>
+                </a>
+            </li>
+            <li><a role="button"
+                  href="https://linkedin.com/">
+                  <img src="https://img.icons8.com/color/48/000000/linkedin.png"/>
+                </a>
+            </li>
+            <li></li>
+              <button class="icon-btn" id="like-button">
+                <img src="https://img.icons8.com/cotton/64/000000/like--v3.png"/>
+              </button>
+            </a>
+        </li>
+          </ul>
+        </section> -->
+
+        <!-- <section class="city__summary" id="Summary"> 
+          <h3> About Hanoi</h3>
+          <p class="result__item-orange">Country: Viet Nam</p>
+          <p class="result__item-gray">Weather: 100 °F</p>
+          <p class="result__item-orange">Covid-19 Cases: 1000</p>
+        </section> -->
+        <!-- <section class="city__weather" id="Weather">
+          <h3> Weather</h3>
+          <div class = "weather--date"></div>
+          <div class = "weather__head">
+            <img class = "js-img" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <div class = "weather--temp"> 
+              100 °F
+            </div>
+          </div>
+          <p class="result__item-orange">Country: Viet Nam</p>
+          <p class="result__item-gray">Weather: 100 °F</p>
+          <p class="result__item-orange">Covid-19 Cases: 1000</p>
+  
+        </section> -->
+        <!-- <section class="city__country" id="Country">
+          <h3> Country</h3>
+          <p class="result__item-orange">Country: Viet Nam</p>
+          <p class="result__item-gray">Weather: 100 °F</p>
+          <p class="result__item-orange">Covid-19 Cases: 1000</p>
+        </section>
+        <section class="city__covid" id="Covid">
+          <h3> Covid-19</h3>
+          <p class="result__item-orange">Country: Viet Nam</p>
+          <p class="result__item-gray">Weather: 100 °F</p>
+          <p class="result__item-orange">Covid-19 Cases: 1000</p>
+        </section> -->
+       
+      </div> 
+    </main>
+    
+    <footer>
+    &copy;2020 by Huyen Nguyen. Powered By GeoName, PixaBay, REST Country, WeatherBit, Covid-19 API.
+    <a href="https://icons8.com/icon/114045/heart">Heart icon by Icons8</a>.
+    <a href="https://icons8.com/icon/5MQ0gPAYYx7a/twitter">Twitter icon by Icons8</a>.
+    <a href="https://icons8.com/icon/uLWV5A9vXIPu/facebook">Facebook icon by Icons8</a>.
+    <a href="https://icons8.com/icon/Xy10Jcu1L2Su/instagram">Instagram icon by Icons8</a>.
+    <a href="https://icons8.com/icon/13930/linkedin">LinkedIn icon by Icons8</a>
+    </footer>
+    
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+          // Use the window load event to keep the page load performant
+          window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/service-worker.js');
+          });
+      }
+     </script>
+     
+  </body>
+</html>

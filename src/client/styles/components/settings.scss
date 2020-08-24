@@ -1,0 +1,54 @@
+$font:  'Lato', sans-serif;
+$text-font-size: 1rem;
+$dark-orange: #f0ae44;
+$light-yellow: #ecf905;
+
+*{
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+  
+html{
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  font-family: $font;
+  overflow-x: hidden;
+}
+
+body{
+  font-size: $text-font-size;
+}
+
+.row{
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+section{
+  padding: 50px 0 50px 0;
+}
+
+.icon-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  img{
+    height: 40px;
+  }
+}
+
+/*Media Query*/
+@media (max-width: 1024px){
+  /*Settings*/
+  .row{
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px){
+  /*Settings*/
+  .row{
+    max-width: 95%;
+  }
+}
